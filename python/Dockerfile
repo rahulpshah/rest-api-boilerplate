@@ -8,6 +8,6 @@ RUN pip install -U -r requirements.txt
 
 ENTRYPOINT ["gunicorn"]
 
-CMD ["--log-level", "DEBUG", "--access-logfile", "-", "app:api"]
+CMD ["--log-level", "DEBUG", "--access-logfile", "-", "-b", "0.0.0.0:8000", "app:api"]
 
 

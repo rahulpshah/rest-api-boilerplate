@@ -1,16 +1,7 @@
-.PHONY: python golang java
+.PHONY: build
 
-python:
-	gunicorn \
-		--access-logfile - \
-		--chdir python/ \
-		app:api
+build:
+	docker build -t ${LANG} ${LANG}
 
-node:
-	node node/server.js
-
-java:
-	mvn package -f java/pom.xml && java -jar java/target/gs-rest-service-0.1.0.jar
-
-golang:
-	go run golang/main.go
+run:
+	docker run -p 8000:8000 ${LANG}
