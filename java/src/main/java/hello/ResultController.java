@@ -1,6 +1,5 @@
 package hello;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ResultController {
-    private final AtomicLong counter = new AtomicLong();
-
     @RequestMapping(value = "/", headers="Content-Type=application/json", method=RequestMethod.POST)
     @ResponseBody
     public Result greeting(@RequestBody Operation responseBody) {
@@ -30,6 +27,6 @@ public class ResultController {
 			result = a * b;
 			break;
 	}
-        return new Result(counter.incrementAndGet(), result);
+        return new Result(result);
     }
 }

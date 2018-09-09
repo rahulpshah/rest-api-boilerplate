@@ -2,11 +2,13 @@ FROM openjdk
 
 RUN apt-get update && apt-get install -y maven
 
-COPY pom.xml /opt/rest/pom.xml
+WORKDIR /opt/rest/
 
-COPY src/ /opt/rest/src 
+COPY pom.xml .
 
-WORKDIR /opt/rest
+RUN mvn dependency:go-offline
+
+COPY src/ ./src
 
 RUN mvn package
 

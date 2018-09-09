@@ -1,20 +1,13 @@
 package hello;
 
 public class Result {
+    private final int result;
 
-    private final long id;
-    private final int a;
-
-    public Result(long id, int a) {
-        this.id = id;
-        this.a = a;
+    public Result(int result) {
+        this.result = result;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public int getA() {
-        return a;
+    public int getResult() {
+        return result;
     }
 }
